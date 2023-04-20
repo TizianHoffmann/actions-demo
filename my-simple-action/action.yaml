@@ -1,0 +1,12 @@
+name: My Action
+description: This is another action
+inputs:
+  message:
+    description: The message that should be printed
+    required: false
+    default: "I'm the default message"
+runs:
+  using: composite
+  steps:
+    - run: echo "${{inputs.message}}"
+      shell: bash
