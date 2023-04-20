@@ -1,0 +1,15 @@
+name: My first action
+description: This is my first action
+inputs:
+  my_input: # saved in an environment variable named $INPUT_MY_INPUT
+    description: An Input
+    required: true
+    default: "1"
+outputs:
+  my_output:
+    description: An Output
+runs:
+  using: docker
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.my_input }}

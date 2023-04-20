@@ -1,0 +1,17 @@
+name: Docker example
+on: push
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # fetch tags and history so "git describe" works properly
+      - name: Create the output
+        uses: ./docker-action
+        id: run-docker-action
+        with:
+          my_input: "Custom input from workflow"
+      - name: Print the output
+        run: echo "${{ steps.run-docker-action.outputs.my_output }}"
